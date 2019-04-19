@@ -28,4 +28,21 @@ The modules will be as follows:
 
 4. If resale is chosen, the resale cost uploaded by the seller will be shown. if rent is chosen, cost will be calculated on the time basis.
 
-Edit
+## Code
+
+
+## Flow Chart
+
+
+## Data Structures used and the reason behind
+
+
+## Functions Explained : Working and Algorithms
+
+
+## Results Screenshots
+
+
+## Task Distribution 
+
+
