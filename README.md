@@ -28,3 +28,4 @@ The modules will be as follows:
 
 4. If resale is chosen, the resale cost uploaded by the seller will be shown. if rent is chosen, cost will be calculated on the time basis.
 
+Edit
