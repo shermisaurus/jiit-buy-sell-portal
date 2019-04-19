@@ -5,14 +5,14 @@ JIIT-62's SDF-2 [2019] Mini Project. A mini buy, sell and rental service applica
 
 **Batch** B-12
 
-1. Amrit Srivastava : 18104070
-2. Ishita Batra : 18104082
-3. Ankesh Bharti : 18104071
-4. Shubh Anand : 18104069
+- Amrit Srivastava : 18104070
+- Ishita Batra : 18104082
+- Ankesh Bharti : 18104071
+- Shubh Anand : 18104069
 
 ## Features
 
-Price range, rent time, or type of accessory (furniture, electronics, or books). 
+Different categories include price range, rent time, or type of accessory (furniture, electronics, or books). 
 
 The modules will be as follows:
 
