@@ -17,6 +17,14 @@ Price range, rent time, or type of accessory (furniture, electronics, or books).
 The modules will be as follows:
 
 1. Uploading contents to resale or rent.
-2. Browsing through various categories given as: • furiture resale/rent • electronic gadgets resale/rent • vehicles resale/rent • books resale/rent 3. The above subcategories will be further divided into sub-sub categories.
+
+2. Browsing through various categories given as:
+- furiture resale/rent 
+- electronic gadgets resale/rent 
+- vehicles resale/rent 
+- books resale/rent 
+
+3. The above subcategories will be further divided into sub-sub categories.
+
 4. If resale is chosen, the resale cost uploaded by the seller will be shown. if rent is chosen, cost will be calculated on the time basis.
 
