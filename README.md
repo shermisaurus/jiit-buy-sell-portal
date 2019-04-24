@@ -30,6 +30,7 @@ The modules will be as follows:
 
 ## Code
 
+[Link to code on repo](https://github.com/shermisaurus/jiit-buy-sell-portal/blob/master/project.c)
 
 ## Flow Chart
 
