@@ -36,7 +36,7 @@ The modules will be as follows:
 
 [Link to code's pdf for printing](https://github.com/shermisaurus/jiit-buy-sell-portal/blob/master/demo-pdfs/code.pdf)
 
-PS : Code attached after page no : 
+PS : Code attached at end of the report. 
 
 ## Flow Chart
 
@@ -51,7 +51,7 @@ PS : Code attached after page no :
 
 [Link to screenshot's pdf for printing](https://github.com/shermisaurus/jiit-buy-sell-portal/blob/master/demo-pdfs/screens.pdf)
 
-PS: Screenshots attached at the last pages of this report.
+PS: Screenshots attached at the end of the report.
 
 
 
