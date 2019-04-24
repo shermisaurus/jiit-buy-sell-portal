@@ -42,6 +42,12 @@ The modules will be as follows:
 
 ## Results Screenshots
 
+![screen1](https://raw.githubusercontent.com/shermisaurus/jiit-buy-sell-portal/master/Screens/1.jpeg)
+![screen2](https://raw.githubusercontent.com/shermisaurus/jiit-buy-sell-portal/master/Screens/2.jpeg)
+![screen3](https://raw.githubusercontent.com/shermisaurus/jiit-buy-sell-portal/master/Screens/3.jpeg)
+![screen4](https://raw.githubusercontent.com/shermisaurus/jiit-buy-sell-portal/master/Screens/4.jpeg)
+![screen5](https://raw.githubusercontent.com/shermisaurus/jiit-buy-sell-portal/master/Screens/5.jpeg)
+
 
 ## Task Distribution 
 
