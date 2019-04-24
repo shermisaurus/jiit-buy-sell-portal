@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/shermisaurus/jiit-buy-sell-portal/master/jiit.jpg" alt="jiit logo"/>
+</p>
+
 # jiit-buy-sell-portal
 JIIT-62's SDF-2 2019 Even Sem Freshmen Year Mini Project. A mini buy, sell and rental service application will be created using C language; The user will have the option to upload their contents to sell, and also browse through varieties to buy or rent accessories which will be sorted using different categories.
 
@@ -30,7 +34,9 @@ The modules will be as follows:
 
 ## Code
 
-[Link to code on repo](https://github.com/shermisaurus/jiit-buy-sell-portal/blob/master/project.c)
+[Link to code's pdf for printing](https://github.com/shermisaurus/jiit-buy-sell-portal/blob/master/demo-pdfs/code.pdf)
+
+PS : Code attached after page no : 
 
 ## Flow Chart
 
@@ -43,11 +49,10 @@ The modules will be as follows:
 
 ## Results Screenshots
 
-![screen1](https://raw.githubusercontent.com/shermisaurus/jiit-buy-sell-portal/master/Screens/1.jpeg)
-![screen2](https://raw.githubusercontent.com/shermisaurus/jiit-buy-sell-portal/master/Screens/2.jpeg)
-![screen3](https://raw.githubusercontent.com/shermisaurus/jiit-buy-sell-portal/master/Screens/3.jpeg)
-![screen4](https://raw.githubusercontent.com/shermisaurus/jiit-buy-sell-portal/master/Screens/4.jpeg)
-![screen5](https://raw.githubusercontent.com/shermisaurus/jiit-buy-sell-portal/master/Screens/5.jpeg)
+[Link to screenshot's pdf for printing](https://github.com/shermisaurus/jiit-buy-sell-portal/blob/master/demo-pdfs/screens.pdf)
+
+PS: Screenshots attached at the last pages of this report.
+
 
 
 ## Task Distribution 
