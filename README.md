@@ -45,11 +45,11 @@ The modules will be as follows:
 
 ## Task Distribution 
 
--Amrit Srivastava : 18104070 :- coded the upload part, and checked project efficiency by refractoring ( process of systematically improving your code without writing new functionality ) existing functions and variables in the codebase.
+- Amrit Srivastava : 18104070 :- coded the upload part, and checked project efficiency by refractoring ( process of systematically improving your code without writing new functionality ) existing functions and variables in the codebase.
 
--Ishita Batra : 18104082 :- coded rent and resale part of the project.
+- Ishita Batra : 18104082 :- coded rent and resale part of the project.
 
--Ankesh Bharti : 18104071 :- division of functions and categories in the codebase and prepared the report docs.
+- Ankesh Bharti : 18104071 :- division of functions and categories in the codebase and prepared the report docs.
 
 - Shubh Anand : 18104069 :- bringed up the project idea, workign and branching of the code.
 
@@ -69,7 +69,7 @@ The modules will be as follows:
 [Link to screenshot's pdf](https://github.com/shermisaurus/jiit-buy-sell-portal/blob/master/demo-pdfs/screens.pdf)
 
 
-PS: Code, flowchart and results scrrenshots attached on further pages.
+PS: Code, flowchart and results screenshots attached on further pages.
 
 
 
