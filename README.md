@@ -57,7 +57,7 @@ The modules will be as follows:
 
 - Ankesh Bharti : 18104071 :- division of functions and categories in the codebase and prepared the report docs.
 
-- Shubh Anand : 18104069 :- bringed up the project idea, workign and branching of the code.
+- Shubh Anand : 18104069 :- brought up the project idea, working and branching of the code.
 
 
 
