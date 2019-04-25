@@ -3,7 +3,9 @@
 </p>
 
 # jiit-buy-sell-portal
+
 JIIT-62's SDF-2 2019 Even Sem Freshmen Year Mini Project. A mini buy, sell and rental service application will be created using C language; The user will have the option to upload their contents to sell, and also browse through varieties to buy or rent accessories which will be sorted using different categories.
+
 
 ## Project Contributors
 
@@ -13,6 +15,7 @@ JIIT-62's SDF-2 2019 Even Sem Freshmen Year Mini Project. A mini buy, sell and r
 - Ishita Batra : 18104082
 - Ankesh Bharti : 18104071
 - Shubh Anand : 18104069
+
 
 ## Features
 
@@ -41,7 +44,10 @@ The modules will be as follows:
 - Strucutres and files are used in this project to improve efficiency and ease of variable access.
 - We have not used any other data structure since that would be wastage of memory and would only serve to make the program complex.
 
+
 ## Functions Explained : Working and Algorithms
+
+
 
 ## Task Distribution 
 
@@ -54,14 +60,15 @@ The modules will be as follows:
 - Shubh Anand : 18104069 :- bringed up the project idea, workign and branching of the code.
 
 
-## Code
-
-[Link to code's pdf](https://github.com/shermisaurus/jiit-buy-sell-portal/blob/master/demo-pdfs/code.pdf)
-
 
 ## Flow Chart
 
 [Link to flow chart's pdf](https://github.com/shermisaurus/jiit-buy-sell-portal/blob/master/demo-pdfs/flowchart.pdf)
+
+
+## Code
+
+[Link to code's pdf](https://github.com/shermisaurus/jiit-buy-sell-portal/blob/master/demo-pdfs/code.pdf)
 
 
 ## Results Screenshots
@@ -69,7 +76,7 @@ The modules will be as follows:
 [Link to screenshot's pdf](https://github.com/shermisaurus/jiit-buy-sell-portal/blob/master/demo-pdfs/screens.pdf)
 
 
-PS: Code, flowchart and results screenshots attached on further pages.
+PS: Flowchart, code and results screenshots attached on further pages.
 
 
 
