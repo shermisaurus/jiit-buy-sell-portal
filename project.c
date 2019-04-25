@@ -1,1055 +1,289 @@
 #include<stdio.h>
+#include<conio.h>
+#include<direct.h>
 #include<stdlib.h>
+#include<time.h>
+#include<ctype.h>
 #include<string.h>
+#include<windows.h>
 
-struct variables{
-  int id,age,price;
-  char model[15],comp[15];
-}v;
-
-struct rent{
-  int id,time,cost;
-  char model[15],comp[15];
-}r;
-
-void mobile_d(){
-    system("cls");
-    FILE *fptr = fopen("elec_mob.txt","r");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        int i=0,ch;
-        printf("Available Mobiles are:- \n");
-        while(fread(&r,sizeof(r),1,fptr)){
-            printf("%d. %s",r.id,r.model);
-        }
-        fclose(fptr);
-        printf("Enter Mobile ID: ");
-        scanf("%d",&ch);
-        int time;
-        FILE *fpt = fopen("elec_mob.txt","r");
-        while(fread(&r,sizeof(r),1,fpt)){
-            if(r.id==ch){
-                printf("Enter your Time of rent: ");
-                scanf("%d",&time);
-                int c = time*0.3*r.cost;
-                printf("Cost of rent is %d",c);
-            }
-        }
-        fclose(fpt);
-	}
+//*******C UTILITY FUNCZTIONS*******//
+void delay(unsigned int mseconds)
+{
+    clock_t goal = mseconds + clock();
+    while (goal > clock());
 }
 
-void lap_d(){
-    system("cls");
-    FILE *fptr = fopen("elec_lap.txt","r");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
+COORD coord={0,0};
 
-    else{
-        int i=0,ch;
-        printf("Available Mobiles are:- \n");
-        while(fread(&r,sizeof(r),1,fptr)){
-            printf("%d. %s",r.id,r.model);
-        }
-        fclose(fptr);
-        printf("Enter Mobile ID: ");
-        scanf("%d",&ch);
-        int time;
-        FILE *fpt = fopen("elec_lap.txt","r");
-        while(fread(&r,sizeof(r),1,fpt)){
-            if(r.id==ch){
-                printf("Enter your Time of rent: ");
-                scanf("%d",&time);
-                int c = time*0.4*r.cost;
-                printf("Cost of rent is %d",c);
-            }
-        }
-        fclose(fpt);
-	}
+void gotoxy(int x,int y)
+{
+    coord.X=x;
+    coord.Y=y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);
 }
+//***C UTILITY FUNCZTIONS END HERE***//
 
-void headphone_d(){
-    system("cls");
-    FILE *fptr = fopen("elec_head.txt","r");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
+//*****************************************************//
+//         STRUCTURE USED IN THE WHOLE PROGRAM         //
+//*****************************************************//
+struct MAIN{
+   int accno;
+   char name[80];
+   char type;
+   int amt;
+}s;
+//*****************************************************//
+//                STRUCTURE END HERE                   //
+//*****************************************************//
 
-    else{
-        int i=0,ch;
-        printf("Available HeadPhones are:- \n");
-        while(fread(&r,sizeof(r),1,fptr)){
-            printf("%d. %s",r.id,r.model);
-        }
-        fclose(fptr);
-        printf("Enter Headphone ID: ");
-        scanf("%d",&ch);
-        int time;
-        FILE *fpt = fopen("elec_head.txt","r");
-        while(fread(&r,sizeof(r),1,fpt)){
-            if(r.id==ch){
-                printf("Enter your Time of rent: ");
-                scanf("%d",&time);
-                int c = time*0.2*r.cost;
-                printf("Cost of rent is %d",c);
-            }
-        }
-        fclose(fpt);
-	}
-}
+void item_network();
+void createacc(void);
+void buy_item();
+void sell_item();
+void rent_item();
+void bank_network(void);
 
-void electronics_d(){
+void main(){
     system("cls");
     int ch;
-    printf("1. MOBILE PHONE\n");
-    printf("2. LAPTOP/PC\n" );
-    printf("3. HEADPHONES/EARPHONES\n" );
-    printf("4. EXIT\n" );
-    printf("Enter your choice: " );
+    printf("\t\t\t\t\t\t\t*******************************************************\n");
+    printf("\t\t\t\t\t\t\t*******************************************************\n");
+    printf("\t\t\t\t\t\t\t**         WELCOME TO JIIT BUY/SELL PORTAL           **\n");
+    printf("\t\t\t\t\t\t\t**               \"SELLING MADE EASY\"                 **\n");
+    printf("\t\t\t\t\t\t\t**                                                   **\n");
+    printf("\t\t\t\t\t\t\t*******************************************************\n");
+    printf("\t\t\t\t\t\t\t*******************************************************\n");
+    printf("   1. ADD AN ITEM\n");
+    delay(300);
+    printf("   2. SEARCH AN ITEM IN LIST\n");
+    delay(300);
+    printf("   3. ITEM LIST\n");
+    delay(300);
+    printf("   4. SELL COST ITEM\n");
+    delay(300);
+    printf("   5. SELL AN ITEM\n");
+    delay(300);
+    printf("   6. RENT COST OF ITEM\n");
+    delay(300);
+    printf("   7. CLOSE SHOP\'S\n");
+    delay(300);
+    printf("   8. EXIT\n");
+    delay(300);
+    printf("   ENTER YOUR CHOICE(1-7): ");
     scanf("%d",&ch);
-
-    switch(ch){
-      case 1:  mobile_d();
-               break;
-      case 2:  lap_d();
-               break;
-      case 3:  headphone_d();
-               break;
-      case 4:  exit(0);
-      default: printf("Enter valid choice");
+    if(ch==1)
+        createacc();
+    else if(ch==2)
+	    item_network();
+    else if(ch==3)
+	    bank_network();
+    else if(ch==4)
+        buy_item();
+    else if(ch==5)
+        sell_item();
+    else if(ch==6)
+	    rent_item();
+    else if(ch==7){
+	    remove("account.txt");
+	    main();
     }
+    else
+        exit(0);
+    getch();
 }
 
-void c_d(){
+void createacc(){
     system("cls");
-    FILE *fptr = fopen("book_c.txt","r");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        int i=0,ch;
-        printf("Available Books are:- \n");
-        while(fread(&r,sizeof(r),1,fptr)){
-            printf("%d. %s",r.id,r.model);
-        }
-        fclose(fptr);
-        printf("Enter Book ID: ");
-        scanf("%d",&ch);
-        int time;
-        FILE *fpt = fopen("book_c.txt","r");
-        while(fread(&r,sizeof(r),1,fpt)){
-            if(r.id==ch){
-                printf("Enter your Time of rent: ");
-                scanf("%d",&time);
-                int c = time*0.1*r.cost;
-                printf("Cost of rent is %d",c);
-            }
-        }
-        fclose(fpt);
-	}
+    FILE *fp = fopen("account.txt","a");
+    delay(150);
+    printf("\n");
+    printf("---------------------------------------------------------------------NEW ITEM ENTRY FORM---------------------------------------------------------------------\n");
+    accno:
+    printf("   Enter Your 5-digit Item No.: ");
+    scanf("%d",&s.accno);
+    printf("\n");
+    printf("   Enter Item Name: ");
+    fflush(stdin);
+    fgets(s.name,80,stdin);
+    printf("\n");
+    printf("   E-Electronics\n");
+    printf("   B-Book\n");
+    printf("   V-Vehicle\n");
+    printf("   Enter Account Type(E\\B\\V): ");
+    scanf("%c",&s.type);
+    printf("\n");
+    printf("   Enter Item Cost: ");
+    scanf("%ld",&s.amt);
+    fwrite(&s,sizeof(s),1,fp);
+    printf("\n\n   THANKS FOR USING OUR SERVICES YOUR ITEM IS ADDED SUCCESSFULLY..........");
+    fclose(fp);
+    getch();
+    main();
 }
 
-void ds_d(){
-    system("cls");
-    FILE *fptr = fopen("book_ds.txt","r");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        int i=0,ch;
-        printf("Available Books are:- \n");
-        while(fread(&r,sizeof(r),1,fptr)){
-            printf("%d. %s",r.id,r.model);
-        }
-        fclose(fptr);
-        printf("Enter Book ID: ");
-        scanf("%d",&ch);
-        int time;
-        FILE *fpt = fopen("book_ds.txt","r");
-        while(fread(&r,sizeof(r),1,fpt)){
-            if(r.id==ch){
-                printf("Enter your Time of rent: ");
-                scanf("%d",&time);
-                int c = time*0.15*r.cost;
-                printf("Cost of rent is %d",c);
-            }
-        }
-        fclose(fpt);
-	}
-}
-
-void fic_d(){
-    system("cls");
-    FILE *fptr = fopen("book_fic.txt","r");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        int i=0,ch;
-        printf("Available Books are:- \n");
-        while(fread(&r,sizeof(r),1,fptr)){
-            printf("%d. %s",r.id,r.model);
-        }
-        fclose(fptr);
-        printf("Enter Book ID: ");
-        scanf("%d",&ch);
-        int time;
-        FILE *fpt = fopen("book_fic.txt","r");
-        while(fread(&r,sizeof(r),1,fpt)){
-            if(r.id==ch){
-                printf("Enter your Time of rent: ");
-                scanf("%d",&time);
-                int c = time*0.2*r.cost;
-                printf("Cost of rent is %d",c);
-            }
-        }
-        fclose(fpt);
-	}
-}
-
-void books_d(){
-    system("cls");
+void item_network()
+{   system("cls");
+    FILE *fp;
     int ch;
-    printf("1. C++\n");
-    printf("2. DATA STRUCTURES\n" );
-    printf("3. FICTION\n" );
-    printf("4. EXIT\n" );
-    printf("Enter your choice\n" );
+    char utype;
+    printf("   Enter Item ID.: ");
     scanf("%d",&ch);
-
-    switch (ch){
-      case 1: c_d();
-              break;
-      case 2: ds_d();
-              break;
-      case 3: fic_d();
-              break;
-      case 4: exit(0);
-      default: printf("Enter valid choice");
+    printf("\n");
+    printf("====================================================================\n");
+    printf("ITEM NO.                 NAME                 Type           COST   \n");
+    printf("====================================================================\n");
+    fp = fopen("account.txt","r");
+    if(!fp){
+        printf("   File doesn't exists");
+        getch();
+        main();
     }
-}
-
-void car_d(){
-    system("cls");
-    FILE *fptr = fopen("vehi_car.txt","r");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        int i=0,ch;
-        printf("Available Cars are:- \n");
-        while(fread(&r,sizeof(r),1,fptr)){
-            printf("%d. %s",r.id,r.model);
-        }
-        fclose(fptr);
-        printf("Enter  ID: ");
-        scanf("%d",&ch);
-        int time;
-        FILE *fpt = fopen("vehi_car.txt","r");
-        while(fread(&r,sizeof(r),1,fpt)){
-            if(r.id==ch){
-                printf("Enter your Time of rent: ");
-                scanf("%d",&time);
-                int c = time*0.4*r.cost;
-                printf("Cost of rent is %d",c);
-            }
-        }
-        fclose(fpt);
-	}
-}
-
-void sc_d(){
-    system("cls");
-    FILE *fptr = fopen("vehi_sc.txt","r");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        int i=0,ch;
-        printf("Available Scooter are:- \n");
-        while(fread(&r,sizeof(r),1,fptr)){
-            printf("%d. %s",r.id,r.model);
-        }
-        fclose(fptr);
-        printf("Enter Scooter ID: ");
-        scanf("%d",&ch);
-        int time;
-        FILE *fpt = fopen("vehi_sc.txt","r");
-        while(fread(&r,sizeof(r),1,fpt)){
-            if(r.id==ch){
-                printf("Enter your Time of rent: ");
-                scanf("%d",&time);
-                int c = time*0.3*r.cost;
-                printf("Cost of rent is %d",c);
-            }
-        }
-        fclose(fpt);
-	}
-}
-
-void bike_d(){
-    system("cls");
-    FILE *fptr = fopen("vehi_bike.txt","r");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        int i=0,ch;
-        printf("Available Bike are:- \n");
-        while(fread(&r,sizeof(r),1,fptr)){
-            printf("%d. %s",r.id,r.model);
-        }
-        fclose(fptr);
-        printf("Enter Bike ID: ");
-        scanf("%d",&ch);
-        int time;
-        FILE *fpt = fopen("vehi_bike.txt","r");
-        while(fread(&r,sizeof(r),1,fpt)){
-            if(r.id==ch){
-                printf("Enter your Time of rent: ");
-                scanf("%d",&time);
-                int c = time*0.3*r.cost;
-                printf("Cost of rent is %d",c);
-            }
-        }
-        fclose(fpt);
-	}
-}
-
-void vehicles_d(){
-    system("cls");
-    int ch;
-    printf("1. CAR\n");
-    printf("2. SCOOTY\n" );
-    printf("3. BIKES\n" );
-    printf("4. EXIT\n" );
-    printf("Enter your choice\n" );
-    scanf("%d",&ch);
-
-    switch(ch){
-      case 1: car_d();
-              break;
-      case 2: sc_d();
-              break;
-      case 3: bike_d();
-              break;
-      case 4: exit(0);
-      default: printf("Enter valid choice");
-    }
-}
-
-void category_d(){
-     system("cls");
-     int ch;
-     printf("1. ELECTRONICS\n");
-     printf("2. BOOKS\n" );
-     printf("3. VEHICLES\n" );
-     printf("4. EXIT\n" );
-     printf("Enter your choice\n" );
-     scanf("%d",&ch);
-
-     switch(ch){
-       case 1: electronics_d();
-               break;
-       case 2: books_d();
-               break;
-       case 3: vehicles_d();
-               break;
-       case 4: exit(0);
-       default: printf("Enter valid choice");
-     }
-}
-
-void mobile_u(){
-    system("cls");
-    FILE *fptr = fopen("elec_mob.txt","a");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        printf("Enter Company name, Model, Price and Age of phone:- \n");
-        printf("Enter ID: ");
-        scanf("%d",&v.id);
-        printf("Company name: ");
-        fflush(stdin);
-        fgets(v.comp,15,stdin);
-        printf("Model: ");
-        fflush(stdin);
-        fgets(v.model,15,stdin);
-        printf("Age of phone: ");
-        scanf("%d",&v.age);
-        printf("Price: ");
-        scanf("%d",&v.price);
-        fwrite(&v,sizeof(v),1,fptr);
-        fclose(fptr);
-	}
-}
-
-void lap_u(){
-    system("cls");
-    FILE *fptr = fopen("elec_lap.txt","a");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        printf("Enter Company name, Model, Price and Age of Laptop:- \n");
-        printf("Enter ID: ");
-        scanf("%d",&v.id);
-        printf("Company name: ");
-        fflush(stdin);
-        fgets(v.comp,15,stdin);
-        printf("Model: ");
-        fflush(stdin);
-        fgets(v.model,15,stdin);
-        printf("Age of Laptop: ");
-        scanf("%d",&v.age);
-        printf("Price: ");
-        scanf("%d",&v.price);
-        fwrite(&v,sizeof(v),1,fptr);
-        fclose(fptr);
-	}
-}
-
-void headphone_u(){
-    system("cls");
-    FILE *fptr = fopen("elec_headphone.txt","a");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        printf("Enter Company name, Model, Price and Age of Headphone:- \n");
-        printf("Enter ID: ");
-        scanf("%d",&v.id);
-        printf("Company name: ");
-        fflush(stdin);
-        fgets(v.comp,15,stdin);
-        printf("Model: ");
-        fflush(stdin);
-        fgets(v.model,15,stdin);
-        printf("Age of Headphones: ");
-        scanf("%d",&v.age);
-        printf("Price: ");
-        scanf("%d",&v.price);
-        fwrite(&v,sizeof(v),1,fptr);
-        fclose(fptr);
-	}
-}
-
-void electronics_u(){
-    int ch;
-    printf("1. MOBILE PHONE\n");
-    printf("2. LAPTOP/PC\n" );
-    printf("3. HEADPHONES/EARPHONES\n" );
-    printf("4. EXIT\n" );
-    printf("Enter your choice\n" );
-    scanf("%d",&ch);
-
-    switch (ch){
-      case 1:  mobile_u();
-               break;
-      case 2:  lap_u();
-               break;
-      case 3:  headphone_u();
-               break;
-      case 4:  exit(0);
-      default: printf("Enter valid choice");
-    }
-}
-
-void c_u(){
-    system("cls");
-    FILE *fptr = fopen("book_c.txt","a");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        printf("Enter Company name, Author, Price and Age of Book:- \n");
-        printf("Enter ID: ");
-        scanf("%d",&v.id);
-        printf("Book name: ");
-        fflush(stdin);
-        fgets(v.comp,15,stdin);
-        printf("Author: ");
-        fflush(stdin);
-        fgets(v.model,15,stdin);
-        printf("Publishing year: ");
-        scanf("%d",&v.age);
-        printf("Price: ");
-        scanf("%d",&v.price);
-        fwrite(&v,sizeof(v),1,fptr);
-        fclose(fptr);
-	}
-}
-
-void ds_u(){
-    system("cls");
-    FILE *fptr = fopen("book_ds.txt","a");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        printf("Enter Company name, Author, Price and Age of Book:- \n");
-        printf("Enter ID: ");
-        scanf("%d",&v.id);
-        printf("Book name: ");
-        fflush(stdin);
-        fgets(v.comp,15,stdin);
-        printf("Author: ");
-        fflush(stdin);
-        fgets(v.model,15,stdin);
-        printf("Publishing year: ");
-        scanf("%d",&v.age);
-        printf("Price: ");
-        scanf("%d",&v.price);
-        fwrite(&v,sizeof(v),1,fptr);
-        fclose(fptr);
-	}
-}
-
-void fic_u(){
-    system("cls");
-    FILE *fptr = fopen("book_fic.txt","a");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        printf("Enter Company name, Author, Price and Age of Book:- \n");
-        printf("Enter ID: ");
-        scanf("%d",&v.id);
-        printf("Book name: ");
-        fflush(stdin);
-        fgets(v.comp,15,stdin);
-        printf("Author: ");
-        fflush(stdin);
-        fgets(v.model,15,stdin);
-        printf("Publishing year: ");
-        scanf("%d",&v.age);
-        printf("Price: ");
-        scanf("%d",&v.price);
-        fwrite(&v,sizeof(v),1,fptr);
-        fclose(fptr);
-	}
-}
-
-void books_u(){
-    int ch;
-    printf("1. C++\n");
-    printf("2. DATA STRUCTURES\n" );
-    printf("3. FICTION\n" );
-    printf("4. EXIT\n" );
-    printf("Enter your choice\n" );
-    scanf("%d",&ch);
-
-    switch (ch){
-      case 1:  c_u();
-               break;
-      case 2:  ds_u();
-               break;
-      case 3:  fic_u();
-               break;
-      case 4:  exit(0);
-      default: printf("Enter valid choice");
-    }
-}
-
-void car_u(){
-    system("cls");
-    FILE *fptr = fopen("vehi_car.txt","a");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        printf("Enter Company name, Model, Price and Age of Headphone:- \n");
-        printf("Enter ID: ");
-        scanf("%d",&v.id);
-        printf("Company name: ");
-        fflush(stdin);
-        fgets(v.comp,15,stdin);
-        printf("Model: ");
-        fflush(stdin);
-        fgets(v.model,15,stdin);
-        printf("Age of Car: ");
-        scanf("%d",&v.age);
-        printf("Price: ");
-        scanf("%d",&v.price);
-        fwrite(&v,sizeof(v),1,fptr);
-        fclose(fptr);
-	}
-}
-
-void sc_u(){
-    system("cls");
-    FILE *fptr = fopen("vehi_sc.txt","a");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        printf("Enter Company name, Model, Price and Age of Headphone:- \n");
-        printf("Enter ID: ");
-        scanf("%d",&v.id);
-        printf("Company name: ");
-        fflush(stdin);
-        fgets(v.comp,15,stdin);
-        printf("Model: ");
-        fflush(stdin);
-        fgets(v.model,15,stdin);
-        printf("Age of Scooter: ");
-        scanf("%d",&v.age);
-        printf("Price: ");
-        scanf("%d",&v.price);
-        fwrite(&v,sizeof(v),1,fptr);
-        fclose(fptr);
-	}
-}
-
-void bike_u(){
-    system("cls");
-    FILE *fptr = fopen("vehi_bike.txt","a");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        printf("Enter Company name, Model, Price and Age of Headphone:- \n");
-        printf("Enter ID: ");
-        scanf("%d",&v.id);
-        printf("Company name: ");
-        fflush(stdin);
-        fgets(v.comp,15,stdin);
-        printf("Model: ");
-        fflush(stdin);
-        fgets(v.model,15,stdin);
-        printf("Age of Bike: ");
-        scanf("%d",&v.age);
-        printf("Price: ");
-        scanf("%d",&v.price);
-        fwrite(&v,sizeof(v),1,fptr);
-        fclose(fptr);
-	}
-}
-
-void vehicles_u(){
-    system("cls");
-    int ch;
-    printf("1. CAR\n");
-    printf("2. SCOOTY\n" );
-    printf("3. BIKES\n" );
-    printf("4. EXIT\n" );
-    printf("Enter your choice\n" );
-    scanf("%d",&ch);
-
-    switch(ch)
+    int i=5;
+    while(1)
     {
-      case 1:  car_u();
-               break;
-      case 2:  sc_u();
-               break;
-      case 3:  bike_u();
-               break;
-      case 4:  exit(0);
-      default: printf("Enter valid choice");
+        fread(&s,sizeof(s),1,fp);
+        if(feof(fp))
+            break;
+        if(s.accno==ch){
+            utype=toupper(s.type);
+            gotoxy(0,i);
+            printf("%ld",s.accno);
+            gotoxy(20,i);
+            printf("%s",s.name);
+            gotoxy(47,i);
+            printf("%c",utype);
+            gotoxy(61,i);
+            printf("%ld",s.amt);
+            gotoxy(76,i);
+            i++;
+        }
     }
+    fclose(fp);
+    getch();
+    main();
 }
 
-void category_u(){
-     system("cls");
-     int ch;
-     printf("1. ELECTRONICS\n");
-     printf("2. BOOKS\n" );
-     printf("3. VEHICLES\n" );
-     printf("4. EXIT\n" );
-     printf("Enter your choice\n" );
-     scanf("%d",&ch);
-
-     switch (ch){
-       case 1: electronics_u();
-               break;
-       case 2: books_u();
-               break;
-       case 3: vehicles_u();
-               break;
-       case 4: exit(0);
-       default: printf("Enter valid choice");
-     }
-}
-
-void mobile_dd(){
-    system("cls");
-    FILE *fptr = fopen("elec_mob.txt","r");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
+void bank_network()
+{   system("cls");
+    FILE *fp;
+    char ch, utype;
+    printf("====================================================================\n");
+    printf("ITEM NO.                 NAME                 Type           COST   \n");
+    printf("====================================================================\n");
+    fp = fopen("account.txt","r");
+    if(!fp){
+        printf("   File doesn't exists");
+        getch();
+        main();
     }
-
-    else{
-        int i=0,ch;
-        printf("Available Laptops are:- \n");
-        while(fread(&r,sizeof(r),1,fptr)){
-            printf("%d. %s",++i,r.model);
-        }
-        fclose(fptr);
-        printf("Enter Laptops ID: ");
-        scanf("%d",&ch);
-        FILE *fpt = fopen("elec_mob.txt","r");
-        while(fread(&r,sizeof(r),1,fpt)){
-            if(r.id==ch){
-                printf("Cost of rent is %d",r.cost);
-            }
-        }
-	}
-}
-
-void lap_dd(){
-    system("cls");
-    FILE *fptr = fopen("elec_lap.txt","r");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
+    int i=5;
+    while(1)
+    {
+        fread(&s,sizeof(s),1,fp);
+        if(feof(fp))
+            break;
+        utype=toupper(s.type);
+        gotoxy(0,i);
+        printf("%ld",s.accno);
+        gotoxy(20,i);
+        printf("%s",s.name);
+        gotoxy(47,i);
+        printf("%c",utype);
+        gotoxy(61,i);
+        printf("%ld",s.amt);
+        gotoxy(76,i);
+        i++;
     }
-
-    else{
-        int i=0,ch;
-        printf("Available Laptops are:- \n");
-        while(fread(&r,sizeof(r),1,fptr)){
-            printf("%d. %s",++i,r.model);
-        }
-        fclose(fptr);
-        printf("Enter Laptops ID: ");
-        scanf("%d",&ch);
-        FILE *fpt = fopen("elec_lap.txt","r");
-        while(fread(&r,sizeof(r),1,fpt)){
-            if(r.id==ch){
-                printf("Cost of rent is %d",r.cost);
-            }
-        }
-	}
+    fclose(fp);
+    getch();
+    main();
 }
 
-void headphone_dd(){
-    system("cls");
-    FILE *fptr = fopen("elec_mob.txt","r");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        int i=0, ch;
-        printf("Available Headphones are:- \n");
-        while(fread(&r,sizeof(r),1,fptr)){
-            printf("%d. %s",++i,r.model);
-        }
-        fclose(fptr);
-        printf("Enter HeadPhone ID: ");
-        scanf("%d",&ch);
-        FILE *fpt = fopen("elec_head.txt","r");
-        while(fread(&r,sizeof(r),1,fpt)){
-            if(r.id==ch){
-                printf("Cost of rent is %d",r.cost);
-            }
-        }
-	}
-}
-
-void electronics_dd(){
-    system("cls");
+void buy_item()
+{   system("cls");
     int ch;
-    printf("1. MOBILE PHONE\n");
-    printf("2. LAPTOP/PC\n" );
-    printf("3. HEADPHONES/EARPHONES\n" );
-    printf("4. EXIT\n" );
-    printf("Enter your choice: " );
+    FILE *fin;
+    fin = fopen("account.txt", "r");
+    printf("                             SELLING PORTAL");
+    delay(150);
+    printf("\n\n");
+    printf("   Enter Item ID: ");
     scanf("%d",&ch);
-
-    switch(ch){
-      case 1:  mobile_dd();
-               break;
-      case 2:  lap_dd();
-               break;
-      case 3:  headphone_dd();
-               break;
-      case 4:  exit(0);
-      default: printf("Enter valid choice");
+    while(fread(&s,sizeof(s),1,fin)){
+        if(s.accno==ch){
+            printf("\n   Name of Item: %s\n",s.name);
+            if(s.type=='E')
+                printf("   Item Type: Electronics\n\n");
+            else if(s.type=='B')
+                printf("   Item Type: Book\n\n");
+            else
+                printf("   Item Type: Vehicle\n\n");
+            int cost;
+            cost= s.amt*1.18;
+            printf("   Sell Cost is: %ld\n\n",cost);
+            break;
+        }
     }
+    getch();
+    main();
 }
 
-void c_dd(){
-    system("cls");
-    FILE *fptr = fopen("book_c.txt","r");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        int i=0,ch;
-        printf("Available Books are:- \n");
-        while(fread(&r,sizeof(r),1,fptr)){
-            printf("%d. %s",r.id,r.model);
-        }
-        fclose(fptr);
-        printf("Enter Book ID: ");
-        scanf("%d",&ch);
-        FILE *fpt = fopen("book_c.txt","r");
-        while(fread(&r,sizeof(r),1,fpt)){
-            if(r.id==ch){
-                printf("Cost of rent is %d",r.cost);
-            }
-        }
-	}
-}
-
-void ds_dd(){
-    system("cls");
-    FILE *fptr = fopen("book_ds.txt","r");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        int i=0,ch;
-        printf("Available Books are:- \n");
-        while(fread(&r,sizeof(r),1,fptr)){
-            printf("%d. %s",r.id,r.model);
-        }
-        fclose(fptr);
-        printf("Enter Book ID: ");
-        scanf("%d",&ch);
-        FILE *fpt = fopen("book_ds.txt","r");
-        while(fread(&r,sizeof(r),1,fpt)){
-            if(r.id==ch){
-                printf("Cost of rent is %d",r.cost);
-            }
-        }
-	}
-}
-
-void fic_dd(){
-    system("cls");
-    FILE *fptr = fopen("book_fic.txt","r");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        int i=0,ch;
-        printf("Available Books are:- \n");
-        while(fread(&r,sizeof(r),1,fptr)){
-            printf("%d. %s",r.id,r.model);
-        }
-        fclose(fptr);
-        printf("Enter Book ID: ");
-        scanf("%d",&ch);
-        FILE *fpt = fopen("book_fic.txt","r");
-        while(fread(&r,sizeof(r),1,fpt)){
-            if(r.id==ch){
-                printf("Cost of rent is %d",r.cost);
-            }
-        }
-	}
-}
-
-void books_dd(){
-    system("cls");
-    int ch;
-    printf("1. C++\n");
-    printf("2. DATA STRUCTURES\n" );
-    printf("3. FICTION\n" );
-    printf("4. EXIT\n" );
-    printf("Enter your choice\n" );
+void rent_item()
+{   system("cls");
+    int ch,time;
+    FILE *fin;
+    fin = fopen("account.txt", "r");
+    printf("                             RENTING PORTAL");
+    delay(150);
+    printf("\n\n");
+    printf("   Enter Item ID: ");
     scanf("%d",&ch);
-
-    switch (ch){
-      case 1: c_dd();
-              break;
-      case 2: ds_dd();
-              break;
-      case 3: fic_dd();
-              break;
-      case 4: exit(0);
-      default: printf("Enter valid choice");
+    while(fread(&s,sizeof(s),1,fin)){
+        if(s.accno==ch){
+            printf("\n   Name of Item: %s\n",s.name);
+            if(s.type=='E')
+                printf("   Item Type: Electronics\n\n");
+            else if(s.type=='B')
+                printf("   Item Type: Book\n\n");
+            else
+                printf("   Item Type: Vehicle\n\n");
+            printf("   Enter Time of Renting: ");
+            scanf("%d",&time);
+            int cost = time*.2*s.amt;
+            printf("   Sell Cost is: %d\n\n",cost);
+            break;
+        }
     }
+    getch();
+    main();
 }
 
-void car_dd(){
+void sell_item(){
     system("cls");
-    FILE *fptr = fopen("vehi_car.txt","r");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
+    long int accno2;
+    char found = 'f';
+    printf("                              SELL AN ITEM\n");
+    FILE *fio=fopen("account.txt","r");
+    FILE *file=fopen("temp.txt", "w");
+    printf("   Please Confirm Your Account No.:");
+    scanf("%ld",&accno2);
+    while(fread(&s,sizeof(s),1,fio)){
+        if(s.accno==accno2)
+            found='t';
+        else
+            fwrite(&s,sizeof(s),1,file);
+            fflush(stdin);
     }
-
-    else{
-        int i=0,ch;
-        printf("Available Cars are:- \n");
-        while(fread(&r,sizeof(r),1,fptr)){
-            printf("%d. %s",r.id,r.model);
-        }
-        fclose(fptr);
-        printf("Enter Car ID: ");
-        scanf("%d",&ch);
-        FILE *fpt = fopen("vehi_car.txt","r");
-        while(fread(&r,sizeof(r),1,fpt)){
-            if(r.id==ch){
-                printf("Cost of rent is %d",r.cost);
-            }
-        }
-	}
-}
-
-void sc_dd(){
-    system("cls");
-    FILE *fptr = fopen("vehi_sc.txt","r");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
+    if(found=='f'){
+      printf("\n   Please Enter Correct Account No.");
+      getch();
     }
-
-    else{
-        int i=0,ch;
-        printf("Available Scooters are:- \n");
-        while(fread(&r,sizeof(r),1,fptr)){
-            printf("%d. %s",r.id,r.model);
-        }
-        fclose(fptr);
-        printf("Enter Scooter ID: ");
-        scanf("%d",&ch);
-        FILE *fpt = fopen("vehi_sc.txt","r");
-        while(fread(&r,sizeof(r),1,fpt)){
-            if(r.id==ch){
-                printf("Cost of rent is %d",r.cost);
-            }
-        }
-	}
-}
-
-void bike_dd(){
-    system("cls");
-    FILE *fptr = fopen("vehi_bike.txt","r");
-    if(!fptr){
-      printf("Error!");
-      exit(1);
-    }
-
-    else{
-        int i=0,ch;
-        printf("Available Bike are:- \n");
-        while(fread(&r,sizeof(r),1,fptr)){
-            printf("%d. %s",r.id,r.model);
-        }
-        fclose(fptr);
-        printf("Enter Bike ID: ");
-        scanf("%d",&ch);
-        FILE *fpt = fopen("vehi_bike.txt","r");
-        while(fread(&r,sizeof(r),1,fpt)){
-            if(r.id==ch){
-                printf("Cost of rent is %d",r.cost);
-            }
-        }
-	}
-}
-
-void vehicles_dd(){
-    system("cls");
-    int ch;
-    printf("1. CAR\n");
-    printf("2. SCOOTY\n" );
-    printf("3. BIKES\n" );
-    printf("4. EXIT\n" );
-    printf("Enter your choice\n" );
-    scanf("%d",&ch);
-
-    switch(ch){
-      case 1: car_dd();
-              break;
-      case 2: sc_dd();
-              break;
-      case 3: bike_dd();
-              break;
-      case 4: exit(0);
-      default: printf("Enter valid choice");
-    }
-}
-
-void category_dd(){
-     system("cls");
-     int ch;
-     printf("1. ELECTRONICS\n");
-     printf("2. BOOKS\n" );
-     printf("3. VEHICLES\n" );
-     printf("4. EXIT\n" );
-     printf("Enter your choice\n" );
-     scanf("%d",&ch);
-
-     switch(ch){
-       case 1: electronics_dd();
-               break;
-       case 2: books_dd();
-               break;
-       case 3: vehicles_dd();
-               break;
-       case 4: exit(0);
-       default: printf("Enter valid choice");
-     }
-}
-
-int main(){
-    system("cls");
-    int ch;
-    printf("WELCOME TO JIIT BUY/SELL PORTAL\n");
-    printf("1. RENT an accessory \n");
-    printf("2. BUY an accessory\n");
-    printf("3. UPLOAD accessories for resale and rent\n");
-    printf("4. Exit\n");
-    printf("Enter your choice\t");
-    scanf("%d",&ch);
-
-    switch(ch){
-        case 1: category_d();
-                break;
-        case 2: category_dd();
-                break;
-        case 3: category_u();
-                break;
-        case 4: exit(0);
-        default: printf("Enter valid choice");
-    }
+    fclose(fio);
+    fclose(file);
+    remove("account.txt");
+    rename("temp.txt","account.txt");
+    printf("\n   THANK YOU FOR BEING A PART OF OBC WE WILL MISS YOU");
+    getch();
+    main();
 }
