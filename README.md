@@ -32,29 +32,47 @@ The modules will be as follows:
 
 4. If resale is chosen, the resale cost uploaded by the seller will be shown. if rent is chosen, cost will be calculated on the time basis.
 
-## Code
-
-[Link to code's pdf for printing](https://github.com/shermisaurus/jiit-buy-sell-portal/blob/master/demo-pdfs/code.pdf)
-
-PS : Code attached at end of the report. 
-
-## Flow Chart
 
 
 ## Data Structures used and the reason behind
 
+- A data structure is a specialised format for organising and storing data. General DS types include arrays, file, structure, trees, lists etc.
+- The first and only data structure used is STRUCTURE to take details of the applicant and store details in the file.
+- Strucutres and files are used in this project to improve efficiency and ease of variable access.
+- We have not used any other data structure since that would be wastage of memory and would only serve to make the program complex.
 
 ## Functions Explained : Working and Algorithms
+
+## Task Distribution 
+
+-Amrit Srivastava : 18104070 :- coded the upload part, and checked project efficiency by refractoring ( process of systematically improving your code without writing new functionality ) existing functions and variables in the codebase.
+
+-Ishita Batra : 18104082 :- coded rent and resale part of the project.
+
+-Ankesh Bharti : 18104071 :- division of functions and categories in the codebase and prepared the report docs.
+
+- Shubh Anand : 18104069 :- bringed up the project idea, workign and branching of the code.
+
+
+## Code
+
+[Link to code's pdf](https://github.com/shermisaurus/jiit-buy-sell-portal/blob/master/demo-pdfs/code.pdf)
+
+
+## Flow Chart
+
+[Link to flow chart's pdf](https://github.com/shermisaurus/jiit-buy-sell-portal/blob/master/demo-pdfs/flowchart.pdf)
 
 
 ## Results Screenshots
 
-[Link to screenshot's pdf for printing](https://github.com/shermisaurus/jiit-buy-sell-portal/blob/master/demo-pdfs/screens.pdf)
-
-PS: Screenshots attached at the end of the report.
+[Link to screenshot's pdf](https://github.com/shermisaurus/jiit-buy-sell-portal/blob/master/demo-pdfs/screens.pdf)
 
 
+PS: Code, flowchart and results scrrenshots attached on further pages.
 
-## Task Distribution 
+
+
+
 
 
