@@ -45,9 +45,15 @@ The modules will be as follows:
 - We have not used any other data structure since that would be wastage of memory and would only serve to make the program complex.
 
 
-## Functions Explained : Working and Algorithms
+## Functions Explained : Working 
 
-
+- createacc : writing data into file of various categories
+- item-network : searching and displaying data
+- admin-network : displaying all data
+- buy-item : selling data by showing cost and removing the sold item from file
+- rent-items : renting by input of time period and calculating cost accordingly
+- sell-item : upload data for selling 
+- close shop : erase file
 
 ## Task Distribution 
 
