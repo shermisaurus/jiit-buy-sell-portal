@@ -42,7 +42,7 @@ void createacc(void);
 void buy_item();
 void sell_item();
 void rent_item();
-void bank_network(void);
+void admin_network(void);
 
 void main(){
     system("cls");
@@ -70,14 +70,14 @@ void main(){
     delay(300);
     printf("   8. EXIT\n");
     delay(300);
-    printf("   ENTER YOUR CHOICE(1-7): ");
+    printf("   ENTER YOUR CHOICE(1-8): ");
     scanf("%d",&ch);
     if(ch==1)
         createacc();
     else if(ch==2)
 	    item_network();
     else if(ch==3)
-	    bank_network();
+	    admin_network();
     else if(ch==4)
         buy_item();
     else if(ch==5)
@@ -164,7 +164,7 @@ void item_network()
     main();
 }
 
-void bank_network()
+void admin_network()
 {   system("cls");
     FILE *fp;
     char ch, utype;
@@ -266,7 +266,7 @@ void sell_item(){
     printf("                              SELL AN ITEM\n");
     FILE *fio=fopen("account.txt","r");
     FILE *file=fopen("temp.txt", "w");
-    printf("   Please Confirm Your Account No.:");
+    printf("   Please Confirm Your Item ID.:");
     scanf("%ld",&accno2);
     while(fread(&s,sizeof(s),1,fio)){
         if(s.accno==accno2)
@@ -276,14 +276,14 @@ void sell_item(){
             fflush(stdin);
     }
     if(found=='f'){
-      printf("\n   Please Enter Correct Account No.");
+      printf("\n   Please Enter Correct Item ID.");
       getch();
     }
     fclose(fio);
     fclose(file);
     remove("account.txt");
     rename("temp.txt","account.txt");
-    printf("\n   THANK YOU FOR BEING A PART OF OBC WE WILL MISS YOU");
+
     getch();
     main();
 }

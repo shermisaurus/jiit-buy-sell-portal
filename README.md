@@ -40,7 +40,7 @@ The modules will be as follows:
 ## Data Structures used and the reason behind
 
 - A data structure is a specialised format for organising and storing data. General DS types include arrays, file, structure, trees, lists etc.
-- The first and only data structure used is STRUCTURE to take details of the applicant and store details in the file.
+- The first and only data structure used is STRUCTURE to take details of the applicant and store details in the file by single object only.
 - Strucutres and files are used in this project to improve efficiency and ease of variable access.
 - We have not used any other data structure since that would be wastage of memory and would only serve to make the program complex.
 
@@ -51,13 +51,13 @@ The modules will be as follows:
 
 ## Task Distribution 
 
-- Amrit Srivastava : 18104070 :- coded the upload part, and checked project efficiency by refractoring ( process of systematically improving your code without writing new functionality ) existing functions and variables in the codebase.
+- Amrit Srivastava : 18104070 :- coded the buy_item and sell_item function entirely, the delay function and checked the coordinate functions with goto.
 
-- Ishita Batra : 18104082 :- coded rent and resale part of the project.
+- Ishita Batra : 18104082 :- coded create account, and rent function and checked the utility by optimising the final code with minor changes.
 
-- Ankesh Bharti : 18104071 :- division of functions and categories in the codebase and prepared the report docs.
+- Ankesh Bharti : 18104071 :- helped with the structural approach, divided the functions, coded item_network and made the report doc.
 
-- Shubh Anand : 18104069 :- brought up the project idea, working and branching of the code.
+- Shubh Anand : 18104069 :- brought up the project idea, and coded admin network code.
 
 
 
